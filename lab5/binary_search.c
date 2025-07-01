@@ -25,7 +25,7 @@ void main(){
     printf("::::: Best case time :::::\n");
 
     start = clock();
-    binarySearch(arr , 100000 , 1 , low , high);
+    binarySearch(arr , 100000 , 99999 , low , high);
     end = clock();
 
     cpu_time = ((double) (end - start) / CLOCKS_PER_SEC);
@@ -35,15 +35,15 @@ void main(){
 
 void binarySearch(int arr[] , int size , int num , int low , int high){
     // printf("Welcome to the function");
-    if(low <= high){
+    while(low <= high){
         int mid = (low + high)/2;
 
         if(arr[mid] < num){
-            binarySearch(arr , size , num , mid + 1 , high);
+            low = mid + 1;
         }
 
         else if(arr[mid] > num){
-            binarySearch(arr , size , num , low , mid - 1);
+            high = mid - 1;
         }
 
         else if(arr[mid] == num){
